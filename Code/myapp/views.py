@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
+from .models import Animals, Place
 
-def create(request):
-    if request.method == "POST":
-        name = request.POST.get('name')
-        print(f"Creating item with name: {name}")
-        
-        return redirect('list')
+def index(request):
+    animals = Animals.objects.all()
+    places = Place.objects.all()
 
-    return render(request, 'create.html') # Don't Include myapp/ in the path
+    return render(request, 'create.html', {"animals": animals, "places": places}) # Don't Include myapp/ in the path

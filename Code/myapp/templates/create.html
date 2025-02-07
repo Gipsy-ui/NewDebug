@@ -3,17 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Item</title>
-    <!-- temporary tanggal ccs, add later -->
+    <title>Animals-Places</title>
 </head>
 <body>
-    <h1>Create New Item</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <button type="submit">Create</button>
-    </form>
-    <a href="">Back to list</a>
+    <h1>Animals</h1>
+    <fieldset>
+        <legend>Add Animal</legend>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="animal">
+
+            <label>Name:</label> <input type="text" name="animal_name" required><br>
+            <label>Species:</label> <input type="text" name="species" required><br>
+            <label>Age:</label> <input type="text" name="age" required><br>
+            <label>Description:</label> <input type="text" name="description" required><br>
+            <button type="submit">Save Animal</button>
+        </form>
+    </fieldset>
+
+    <table border="2">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Age</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ animal.name }}</td>
+                <td>{{ animal.species }}</td>
+                <td>{{ animal.age }}</td>
+                <td>{{ animal.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Places</h2>
+    <fieldset>
+        <legend>Add Place</legend>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="place">
+
+            <label>Name:</label> <input type="text" name="place_name" required><br>
+            <label>Location:</label> <input type="text" name="location" required><br>
+            <label>Description:</label> <input type="text" name="place_description" required><br>
+            <button type="submit">Save Location</button>
+        </form>
+    </fieldset>
+
+    <table border="2">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ place.name }}</td>
+                <td>{{ place.location }}</td>
+                <td>{{ place.description }}</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
