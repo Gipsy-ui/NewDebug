@@ -15,8 +15,8 @@
 
             <label>Name:</label> <input type="text" name="animal_name" required><br>
             <label>Species:</label> <input type="text" name="species" required><br>
-            <label>Age:</label> <input type="text" name="age" required><br>
-            <label>Description:</label> <input type="text" name="description" required><br>
+            <label>Age:</label> <input type="number" name="age" required><br>
+            <label>Description:</label> <input type="text" name="description"><br>
             <button type="submit">Save Animal</button>
         </form>
     </fieldset>
@@ -31,12 +31,14 @@
             </tr>
         </thead>
         <tbody>
+            {% for animal in animals %}
             <tr>
                 <td>{{ animal.name }}</td>
                 <td>{{ animal.species }}</td>
                 <td>{{ animal.age }}</td>
                 <td>{{ animal.description }}</td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 
@@ -49,7 +51,7 @@
 
             <label>Name:</label> <input type="text" name="place_name" required><br>
             <label>Location:</label> <input type="text" name="location" required><br>
-            <label>Description:</label> <input type="text" name="place_description" required><br>
+            <label>Description:</label> <input type="text" name="place_description"><br>
             <button type="submit">Save Location</button>
         </form>
     </fieldset>
@@ -63,11 +65,13 @@
             </tr>
         </thead>
         <tbody>
+            {% for place in places %}
             <tr>
                 <td>{{ place.name }}</td>
                 <td>{{ place.location }}</td>
                 <td>{{ place.description }}</td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </body>
