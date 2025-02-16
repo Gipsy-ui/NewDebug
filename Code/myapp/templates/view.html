@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pg 2</title>
+</head>
+<body>
+    <h1>Edit Animal</h1>
+
+    <form action="update/" method="POST">
+        {% csrf_token %}
+        <label>Name:</label>
+        <input type="text" name="animal_name" required><br>
+
+        <label>Species:</label>
+        <input type="text" name="species" required><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" required><br>
+
+        <label>Description:</label>
+        <textarea name="description"></textarea><br>
+
+        <button type="submit">Save Animal</button>
+    </form>
+</body>
+</html>

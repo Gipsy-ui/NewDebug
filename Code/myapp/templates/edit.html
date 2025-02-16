@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit {{ model_type|title }}</title>
+</head>
+<body>
+    <h1>Edit {{ model_type|title }}</h1>
+    
+    <form method="POST" action="{% url 'update' model_type item.id %}">
+        {% csrf_token %}
+
+        <label>Name:</label>
+        <input type="text" name="name" value="{{ item.name }}" required><br>
+
+        {% if model_type == "animal" %}
+            <label>Species:</label>
+            <input type="text" name="species" value="{{ item.species }}" required><br>
+
+            <label>Age:</label>
+            <input type="number" name="age" value="{{ item.age }}" required><br>
+        {% elif model_type == "place" %}
+            <label>Location:</label>
+            <input type="text" name="location" value="{{ item.location }}" required><br>
+        {% endif %}
+
+        <label>Description:</label>
+        <textarea name="description">{{ item.description }}</textarea><br>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <a href="{% url 'index' %}">Cancel</a>
+</body>
+</html>
