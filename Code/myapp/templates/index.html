@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Animals & Places</title>
+</head>
+<body>
+    <h1>Animals</h1>
+    <ul>
+        {% for animal in animals %}
+            <li>
+                {{ animal.name }} - {{ animal.species }} ({{ animal.age }} years old)  
+                <a href="{% url 'edit' 'animal' animal.id %}">Edit</a> |  
+                <a href="{% url 'delete' 'animal' animal.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h1>Places</h1>
+    <ul>
+        {% for place in places %}
+            <li>
+                {{ place.name }} - {{ place.location }}  
+                <a href="{% url 'edit' 'place' place.id %}">Edit</a> |  
+                <a href="{% url 'delete' 'place' place.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add Animal</h2>
+    <form action="{% url 'save' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="form_type" value="animal">
+        <input type="text" name="animal_name" placeholder="Name" required>
+        <input type="text" name="species" placeholder="Species" required>
+        <input type="number" name="age" placeholder="Age" required>
+        <textarea name="description" placeholder="Description"></textarea>
+        <button type="submit">Add Animal</button>
+    </form>
+
+    <h2>Add Place</h2>
+    <form action="{% url 'save' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="form_type" value="place">
+        <input type="text" name="place_name" placeholder="Name" required>
+        <input type="text" name="location" placeholder="Location" required>
+        <textarea name="place_description" placeholder="Description"></textarea>
+        <button type="submit">Add Place</button>
+    </form>
+</body>
+</html>

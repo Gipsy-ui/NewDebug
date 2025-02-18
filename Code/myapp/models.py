@@ -9,7 +9,7 @@ class Animals(models.Model):
     def __str__(self):
         return self.name
 
-class Place(models.Model):
+class Places(models.Model):
     name = models.CharField(max_length=100, default="Unknown")  
     location = models.CharField(max_length=100, default="Unknown")  
     description = models.TextField(null=True, blank=True)  
